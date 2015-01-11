@@ -1,6 +1,6 @@
-local current_dir = (...)
+local current_dir = (...):gsub('%.','/')
 
-if string.sub(current_dir, -5) == ".init" then
+if string.sub(current_dir, -5) == "/init" then
     current_dir = string.sub(current_dir, 0, -6)
 end
 
