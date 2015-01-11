@@ -1,4 +1,4 @@
-local inspect = require 'inspect'
+local inspect = require 'inspect.inspect'
 
 local function dump_nest_limit_string(object, level)
     local  object_t = type(object)
