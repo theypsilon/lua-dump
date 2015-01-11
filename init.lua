@@ -1,14 +1,12 @@
-local current_dir = (...):gsub('%.','/')
+local current_dir = (...)
 
-if string.sub(current_dir, -5) == "/init" then
+if string.sub(current_dir, -4) == "init" then
     current_dir = string.sub(current_dir, 0, -6)
 end
 
-local backup_path = package.path
-package.path = package.path .. ";" .. current_dir .. "/?.lua"
-
+local backup_require = require
+require = function(path) return backup_require(current_dir .. "." .. path) end
 local lib = require 'dump'
-
-package.path = backup_path
+require = backup_require
 
 return lib
